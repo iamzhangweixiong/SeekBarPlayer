@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SeekBarPlayer</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="default_permission_title">TextOne</string>
+
+    <!-- permission -->
+    <string name="rationale_ask_again">This app may not work correctly without the requested permissions. Open the app settings screen to modify app permissions.</string>
+    <string name="title_settings_dialog">Permissions Required</string>
+
+    <string name="permission_positive">GOT IT</string>
+    <string name="permission_phone_title">Recent Calls Access</string>
+    <string name="permission_contact_title">Contacts Access</string>
+    <string name="permission_camera_title">Camera Access</string>
+    <string name="permission_storage_title">Gallery Access</string>
+    <string name="permission_micro_phone_title">Audio Recorder Access</string>
+
+    <string name="rationale_phone">For TextOne to function correctly, please grant permission to access your Recent Calls.</string>
+    <string name="rationale_contact">For TextOne to function correctly, please grant permission to access your Contacts.</string>
+    <string name="rationale_camera">To take photos, please grant TextOne permission to access your Camera.</string>
+    <string name="rationale_storage">To send photos, please grant TextOne permission to access your Gallery.</string>
+    <string name="rationale_micro_phone">To make/answer phone calls, please grant TextOne permission to record audio.</string>
+</resources>
