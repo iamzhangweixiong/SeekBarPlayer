@@ -12,6 +12,10 @@
         android:id="@+id/seeker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="60dp" />
+        android:maxHeight="2dp"
+        android:minHeight="2dp"
+        android:paddingTop="60dp"
+        android:progressDrawable="@drawable/seek_bar_bg"
+        android:thumb="@drawable/seek_thumb_bg" />
 
 </android.support.constraint.ConstraintLayout>
