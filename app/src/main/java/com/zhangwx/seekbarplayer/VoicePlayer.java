@@ -38,7 +38,6 @@ public class VoicePlayer implements MediaPlayer.OnSeekCompleteListener,
         mMediaPlayer.setOnCompletionListener(this);
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         mSensor = new ProximitySensor(context);
-        mSensor.registryEventListener(this);
     }
 
     @Override
@@ -46,6 +45,9 @@ public class VoicePlayer implements MediaPlayer.OnSeekCompleteListener,
         final int duration = mp.getDuration();
         for (IVoicePlayActionListener listener : VoicePlayActionListeners) {
             listener.onPrepared(duration);
+        }
+        if (mSensor != null) {
+            mSensor.registryEventListener(this);
         }
         mp.start();
     }
@@ -106,11 +108,17 @@ public class VoicePlayer implements MediaPlayer.OnSeekCompleteListener,
         if (mMediaPlayer != null) {
             mMediaPlayer.pause();
         }
+        if (mSensor != null) {
+            mSensor.unRegistryEventListener();
+        }
     }
 
     public void stop() {
         if (mMediaPlayer != null) {
             mMediaPlayer.stop();
+        }
+        if (mSensor != null) {
+            mSensor.unRegistryEventListener();
         }
     }
 
@@ -124,6 +132,9 @@ public class VoicePlayer implements MediaPlayer.OnSeekCompleteListener,
     public void start() {
         if (mMediaPlayer != null) {
             mMediaPlayer.start();
+        }
+        if (mSensor != null) {
+            mSensor.registryEventListener(this);
         }
     }
 
@@ -216,7 +227,7 @@ public class VoicePlayer implements MediaPlayer.OnSeekCompleteListener,
             mAudioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
             mAudioManager.setSpeakerphoneOn(false);
             mAudioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL,
-                    mAudioManager.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL), AudioManager.FLAG_PLAY_SOUND);
+                    mAudioManager.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL), AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
         }
     }
 }
